@@ -1,10 +1,13 @@
 import random
 #Number guesser is a game where a random number is selected and the player has to guess the right number in less than X guesses
-random_num_range_min = 1
-random_num_range_max = 200
+
 
 #starting number of guesses a user has
 number_of_guesses = 5
+
+#all information for random number generation; upper and lower bounds
+random_num_range_min = 1
+random_num_range_max = 200
 random_num = random.randint(random_num_range_min, random_num_range_max)
 print(random_num)
 
