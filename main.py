@@ -14,35 +14,38 @@ print(random_num)
 
 
 
+
 while number_of_guesses > 0:
-    turn_number= 1
-    guess = int(input("What number would you like to guess?"))
+    turn_number = 1
+
+
 
     #With the difference I want to be able to give hints. I can detect how far the guess is off (by the difference) and give hints accordingly
-    difference = abs(guess - random_num)
     
+    if turn_number == 1:
+        print("A number between " + str(random_num_range_min) + " and " + str(random_num_range_max) + " was just selected.")
+        guess = int(input("What number would you like to guess?"))
+        difference = abs(guess - random_num)
 
+        if guess != random_num:
+            if difference > 50:
+                print("You're at least 50 numbers off!")
+            elif difference < 50 and difference >20:
+                print("You're between 20 and 50 numbers away! But still wrong!")
+            elif difference < 20:
+                print("You're less than 20 numbers away! But still wrong!")
+            number_of_guesses = number_of_guesses -1
+            print(f'Incorrect guess. Remaining guesses:', number_of_guesses)
+            print("")
+            turn_number = turn_number + 1
 
-    if difference > 50:
-        print("You're at least 50 numbers off!")
-    elif difference < 50 and difference >20:
-        print("You're between 20 and 50 numbers away! But still wrong!")
-    elif difference < 20:
-        print("You're less than 20 numbers away! But still wrong!")
-    if guess != random_num and turn_number == 1:
-        number_of_guesses = number_of_guesses -1
-        print(f'TESTESTETESTIncorrect guess. Remaining guesses:', number_of_guesses)
+        else:
+            print("GAME WON: Holy shit you aren't a nerd you WON")
+            number_of_guesses = -1
         turn_number = turn_number + 1
-
-    elif guess != random_num:
-        number_of_guesses = number_of_guesses - 1
-        print(f'Incorrect guess. Remaining guesses:', number_of_guesses)
-
-
+        
     else:
-        print("GAME WON: Holy shit you aren't a nerd you WON")
-        number_of_guesses = -1
+        guess = int(input("What number would you like to guess?"))
 #not happy with having to specific guesses = 0 but was getting issues with game winning guess printing win message and no more guesses message
-if number_of_guesses == 0:
-    print("You ran out of guesses, game over NERD")
+print("You ran out of guesses, game over NERD")
 
