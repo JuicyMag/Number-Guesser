@@ -1,0 +1,2 @@
+# Number-Guesser
+This is a very simple game where the system generates a random number and the user has a specified number of attempts to guess it correctly. More updates can be made to this in the coming iterations. I'm not sure if I will pursue it but one thing that could be fun is to give hints ("getting warmer!" if the guesses overtime get closer; showing the numbers guessed like hangman char guesses; etc).
