@@ -23,17 +23,21 @@ while number_of_guesses > 0:
     
     if turn_number == 1:
         guess = int(input("What number would you like to guess?"))
-        difference = abs(guess - random_num)
+        # difference = abs(guess - random_num)
         
-        if guess > random_num:
-            print("Your guess is out of the range of random number! Your turn was not used.")
+        if guess > random_num_range_max or guess < random_num_range_min:
+            print("Your guess is out of the range of the random number! Your turn was not used.")
 
-        else:    
+        else:
+               
             if guess != random_num:
+                difference = abs(guess - random_num) 
                 if difference > 50:
                     print("You're at least 50 numbers off!")
+
                 elif difference < 50 and difference >20:
                     print("You're between 20 and 50 numbers away! But still wrong!")
+
                 elif difference < 20:
                     print("You're less than 20 numbers away! But still wrong!")
                 number_of_guesses = number_of_guesses -1
@@ -49,9 +53,10 @@ while number_of_guesses > 0:
             
     else:
             guess = int(input("What number would you like to guess?"))
-
-            if guess > random_num:
-                print("Your guess is out of the range of random number! Your turn was not used.")
+            difference = abs(guess - random_num)
+            
+            if guess > random_num_range_max or guess < random_num_range_min:
+                print("Your guess is out of the range of the random number! Your turn was not used.")
 
             if guess != random_num:
                 if difference > 50:
