@@ -84,3 +84,4 @@ while number_of_guesses > 0:
 if number_of_guesses == 0:
     print("You ran out of guesses, game over NERD")
     print("Your number was: " + random_num)
+    print("random test to see if git is working!")
