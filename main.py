@@ -3,14 +3,14 @@ import random
 
 
 #starting number of guesses a user has
-number_of_guesses = 5
+number_of_guesses = int(input("How many turns would you like?"))
 turn_number = 0
 
 #all information for random number generation; upper and lower bounds
 random_num_range_min = int(input("In this game you get to pick the range the number randomly gets generated from. Give me the lower bound. "))
 random_num_range_max = int(input("Give me the upper bound. "))
 random_num = random.randint(random_num_range_min, random_num_range_max)
-print(random_num)
+# print(random_num)
 
 turn_number = 1
 
@@ -19,23 +19,31 @@ print("A number between " + str(random_num_range_min) + " and " + str(random_num
 
 
 while number_of_guesses > 0:
-    
-    
+        
     if turn_number == 1:
         guess = int(input("What number would you like to guess?"))
-        difference = abs(guess - random_num)
+        # difference = abs(guess - random_num)
+        turn_number = turn_number + 1
         
-        if guess > random_num:
-            print("Your guess is out of the range of random number! Your turn was not used.")
+        if guess > random_num_range_max or guess < random_num_range_min:
+            print("Your guess is out of the range of the random number! Your turn was not used.")
 
-        else:    
+        else:
+               
             if guess != random_num:
+                difference = abs(guess - random_num) 
                 if difference > 50:
                     print("You're at least 50 numbers off!")
+
                 elif difference < 50 and difference >20:
-                    print("You're between 20 and 50 numbers away! But still wrong!")
-                elif difference < 20:
+                    print("You're less than 50 numbers away! But still wrong!")
+
+                elif difference < 20 and difference> 5:
                     print("You're less than 20 numbers away! But still wrong!")
+
+                elif difference < 5:
+                    print("You're less than 5 numbers away! But still wrong!")
+
                 number_of_guesses = number_of_guesses -1
                 print(f'Incorrect guess. Remaining guesses:', number_of_guesses)
                 print("")
@@ -48,18 +56,21 @@ while number_of_guesses > 0:
             turn_number = turn_number + 1
             
     else:
-            guess = int(input("What number would you like to guess?"))
-
-            if guess > random_num:
-                print("Your guess is out of the range of random number! Your turn was not used.")
-
+            guess = int(input("What number would you like to guess turn not 1?"))
+            difference = abs(guess - random_num)
+            
+            if guess > random_num_range_max or guess < random_num_range_min:
+                print("Your guess is out of the range of the random number! Your turn was not used.")
+                
             if guess != random_num:
                 if difference > 50:
                     print("You're at least 50 numbers off!")
                 elif difference < 50 and difference >20:
-                    print("You're between 20 and 50 numbers away! But still wrong!")
-                elif difference < 20:
+                    print("You're less than 50 numbers away! But still wrong!")
+                elif difference < 20 and difference> 5:
                     print("You're less than 20 numbers away! But still wrong!")
+                elif difference < 5:
+                    print("You're less than 5 numbers away! But still wrong!")
                 number_of_guesses = number_of_guesses -1
                 print(f'Incorrect guess. Remaining guesses:', number_of_guesses)
                 print("")
@@ -72,3 +83,4 @@ while number_of_guesses > 0:
 
 if number_of_guesses == 0:
     print("You ran out of guesses, game over NERD")
+    print("Your number was: " + random_num)
