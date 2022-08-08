@@ -7,8 +7,8 @@ number_of_guesses = 5
 turn_number = 0
 
 #all information for random number generation; upper and lower bounds
-random_num_range_min = 1
-random_num_range_max = 200
+random_num_range_min = int(input("In this game you get to pick the range the number randomly gets generated from. Give me the lower bound. "))
+random_num_range_max = int(input("Give me the upper bound. "))
 random_num = random.randint(random_num_range_min, random_num_range_max)
 print(random_num)
 
